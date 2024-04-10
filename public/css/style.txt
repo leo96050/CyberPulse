@@ -1,0 +1,70 @@
+/* Global Styles */
+body {
+  background-color: #121212; 
+  color: #e0e0e0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+a {
+  color: #bb86fc;
+}
+
+a:hover {
+  color: #3700b3;
+}
+
+/* Navigation Bar */
+.navbar {
+  background-color: #333;
+}
+
+.nav-link {
+  color: #e0e0e0 !important;
+}
+
+.nav-link:hover {
+  color: #bb86fc !important;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #6200ee;
+  border-color: #6200ee;
+}
+
+.btn-primary:hover {
+  background-color: #3700b3;
+  border-color: #3700b3;
+}
+
+/* Forms */
+.form-control {
+  background-color: #333;
+  border: 1px solid #333;
+  color: #e0e0e0;
+}
+
+.form-control:focus {
+  background-color: #333;
+  border: 1px solid #bb86fc;
+  box-shadow: 0 0 0 0.2rem rgba(187, 134, 252, 0.25);
+}
+
+.form-control:hover {
+  border: 1px solid #bb86fc;
+}
+
+/* Footer */
+.footer {
+  background-color: #222;
+  color: rgb(129, 94, 94);
+}
+
+/* Specific page styles (body-index) */
+.body-index {
+  background-image: url('../css/a.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Add this line */
+}
+

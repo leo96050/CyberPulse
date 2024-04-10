@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scan Results</title>
+    <style>
+      body {
+        background-color: #1a1a1a; /* Dark background color */
+        color: #ffffff; /* Text color */
+        font-family: Arial, sans-serif; /* Default font for the body */
+      }
+
+      h1 {
+        font-family: "Times New Roman", Times, serif; /* Font for headings */
+      }
+
+      p {
+        font-family: "Courier New", Courier, monospace; /* Font for paragraphs */
+      }
+
+      ul {
+        list-style-type: none; /* Remove bullet points from list */
+      }
+
+      li {
+        margin-bottom: 20px; /* Add spacing between list items */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Scan Results</h1>
+    <ul>
+      <% vulnerabilities.forEach((vuln) => { %>
+      <li>
+        <h2><%= vuln.name %></h2>
+        <p><strong>Description:</strong> <%= vuln.description %></p>
+        <p><strong>Risk:</strong> <%= vuln.risk %></p>
+        <p><strong>Evidence:</strong> <%= vuln.evidence %></p>
+      </li>
+      <% }); %>
+    </ul>
+  </body>
+</html>
