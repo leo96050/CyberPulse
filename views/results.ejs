@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scan Results</title>
+    <style>
+      body {
+        color: #ffffff; /* Text color */
+        font-family: Arial, sans-serif; /* Default font for the body */
+        padding: 20px; /* Add some padding for better readability */
+        margin: 0; /* Remove default margin */
+      }
+
+      .container {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.5
+        ); /* Semi-transparent black background for each container */
+        padding: 20px; /* Add padding inside each container */
+        margin-bottom: 20px; /* Add spacing between containers */
+        border-radius: 10px; /* Rounded corners for containers */
+        position: relative; /* Add position relative to position the risk symbols */
+        opacity: 0; /* Initially hide the containers */
+        transition: opacity 0.5s ease; /* Smooth transition for opacity */
+      }
+
+      .loading-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 5px;
+        background-color: #fff;
+        z-index: 9999;
+        transition: width 2s ease; /* Smooth transition for width */
+      }
+
+      @keyframes loading-animation {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      /* Style for video */
+      #bg-video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        min-height: 100%;
+        width: auto;
+        height: auto;
+        z-index: -1; /* Place the video behind all other content */
+      }
+    </style>
+  </head>
+  <body>
+    <video id="bg-video" autoplay muted loop>
+      <source src="../css/Fla.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+
+    <div class="loading-bar"></div>
+
+    <h1>Scan Results</h1>
+    <ul class="container">
+      <% vulnerabilities.forEach((vuln) => { %>
+      <li>
+        <div class="container">
+          <!-- Container for each vulnerability result -->
+          <h2><%= vuln.name %></h2>
+          <p><strong>Description:</strong> <%= vuln.description %></p>
+          <p><strong>Risk:</strong> <%= vuln.risk %></p>
+          <!-- No Risk symbol -->
+          <p><strong>Evidence:</strong> <%= vuln.evidence %></p>
+        </div>
+      </li>
+      <% }); %>
+    </ul>
+
+    <script>
+      // Function to show the loading animation
+      window.addEventListener("DOMContentLoaded", function () {
+        document.querySelector(".loading-bar").style.animation =
+          "loading-animation 2s forwards";
+      });
+      // Function to hide the loading animation after the content is loaded
+      window.addEventListener("load", function () {
+        document.querySelector(".loading-bar").style.width = "100%";
+        setTimeout(function () {
+          document.querySelector(".loading-bar").style.display = "none";
+          document.querySelectorAll(".container").forEach(function (element) {
+            element.style.opacity = "1";
+          });
+        }, 2000); // Wait for 2 seconds after the content is loaded
+      });
+    </script>
+  </body>
+</html>
