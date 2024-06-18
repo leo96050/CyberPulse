@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/_head.ejs') %>
+  <body class="d-flex flex-column h-100">
+    <!-- Set body to flex column and height 100% -->
+    <video
+      autoplay
+      loop
+      muted
+      class="position-fixed top-0 start-0 w-100 h-100"
+      style="object-fit: cover"
+    >
+      <source src="../css/starry.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <%- include('partials/_header.ejs') %>
+    <main role="main" class="container flex-grow-1 mt-4">
+      <!-- Use flex-grow-1 to make main section fill remaining space -->
+      <div class="row">
+        <div class="col-lg-3 mb-4">
+          <!-- Adjust column width and add margin bottom -->
+          <div
+            class="about-section bg-dark p-4 rounded shadow-lg"
+            style="background-color: rgba(0, 0, 0, 0.7)"
+          >
+            <!-- Add background color with opacity, padding, border-radius, and shadow -->
+            <h1
+              class="text-light mb-4 animate__animated animate__fadeInLeft"
+              style="font-size: 1.5rem"
+            >
+              About CyberPulse
+            </h1>
+            <p
+              class="text-light animate__animated animate__fadeInLeft animate__delay-1s"
+              style="font-size: 1.2rem"
+            >
+              CyberPulse is a cutting-edge vulnerability scanning website
+              designed to educate users about cybersecurity threats and provide
+              tools for scanning URLs for potential security risks. Our goal is
+              to make cybersecurity knowledge accessible to everyone, from
+              beginners to seasoned professionals.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <!-- Adjust column width and add margin bottom -->
+          <div
+            class="mission-section bg-dark p-4 rounded shadow-lg"
+            style="background-color: rgba(0, 0, 0, 0.7)"
+          >
+            <!-- Add background color with opacity, padding, border-radius, and shadow -->
+            <h2
+              class="text-light mb-4 animate__animated animate__fadeInRight"
+              style="font-size: 1.5rem"
+            >
+              Our Mission
+            </h2>
+            <p
+              class="text-light animate__animated animate__fadeInRight animate__delay-1s"
+              style="font-size: 1.2rem"
+            >
+              Our mission is to empower individuals and organizations with the
+              knowledge and tools to protect themselves in the digital world. We
+              believe in making complex cybersecurity concepts understandable
+              and actionable for all.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <!-- Adjust column width and add margin bottom -->
+          <div
+            class="benefits-section bg-dark p-4 rounded shadow-lg"
+            style="background-color: rgba(0, 0, 0, 0.7)"
+          >
+            <!-- Add background color with opacity, padding, border-radius, and shadow -->
+            <h2
+              class="text-light mb-4 animate__animated animate__fadeInLeft"
+              style="font-size: 1.5rem"
+            >
+              Benefits of Using CyberPulse
+            </h2>
+            <ul
+              class="text-light animate__animated animate__fadeInLeft animate__delay-1s"
+              style="font-size: 1.2rem"
+            >
+              <li>
+                Access to up-to-date information on cybersecurity
+                vulnerabilities.
+              </li>
+              <li>
+                Easy-to-use tools for scanning websites for potential threats.
+              </li>
+              <li>Educational resources tailored for beginners.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-lg-3 mb-4">
+          <!-- Adjust column width and add margin bottom -->
+          <div
+            class="how-to-section bg-dark p-4 rounded shadow-lg"
+            style="background-color: rgba(0, 0, 0, 0.7)"
+          >
+            <!-- Add background color with opacity, padding, border-radius, and shadow -->
+            <h2
+              class="text-light mb-4 animate__animated animate__fadeInRight"
+              style="font-size: 1.5rem"
+            >
+              How to Use CyberPulse
+            </h2>
+            <p
+              class="text-light animate__animated animate__fadeInRight animate__delay-1s"
+              style="font-size: 1.2rem"
+            >
+              Simply navigate to the Security section, enter the URL you wish to
+              scan, and hit the "Submit" button. Our system will process your
+              request and provide you with a comprehensive report on the
+              security status of the URL.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-lg-9"></div>
+        <div class="col-lg-3">
+          <!-- Space for animation -->
+        </div>
+      </div>
+    </main>
+    <%- include('partials/_footer.ejs') %>
+    <script src="/js/main.js"></script>
+
+    <!-- Include animate.css library for animations -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </body>
+</html>

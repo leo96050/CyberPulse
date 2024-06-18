@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('partials/_head.ejs') %>
+  <body class="d-flex flex-column h-100">
+    <!-- Set body to flex column and height 100% -->
+    <video
+      autoplay
+      loop
+      muted
+      class="position-fixed top-0 start-0 w-100 h-100"
+      style="object-fit: cover"
+    >
+      <source src="../css/starry.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    <%- include('partials/_header.ejs') %>
+    <main role="main" class="container flex-grow-1 mt-4">
+      <!-- Use flex-grow-1 to make main section fill remaining space -->
+      <div class="row">
+        <div class="col-lg-12 mb-4">
+          <!-- Adjust column width and add margin bottom -->
+          <div
+            class="rate-us-section bg-dark p-4 rounded shadow-lg"
+            style="background-color: rgba(0, 0, 0, 0.7)"
+          >
+            <!-- Add background color with opacity, padding, border-radius, and shadow -->
+            <h1
+              class="text-light mb-4 animate__animated animate__fadeInLeft"
+              style="font-size: 1.5rem"
+            >
+              Rate Us
+            </h1>
+            <p
+              class="text-light animate__animated animate__fadeInLeft animate__delay-1s"
+              style="font-size: 1.2rem"
+            >
+              Thank you for using CyberPulse! We value your feedback. Please
+              take a moment to rate our service.
+            </p>
+            <!-- Rating buttons with blue colors -->
+            <div class="btn-group" role="group" aria-label="Rate Us">
+              <a href="../css/rick.mp4" class="btn btn-primary">Bad</a>
+              <a href="../css/rick.mp4" class="btn btn-info">Good</a>
+              <a href="../css/rick.mp4" class="btn btn-success">Excellent</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-lg-9"></div>
+        <div class="col-lg-3">
+          <!-- Space for animation -->
+        </div>
+      </div>
+    </main>
+    <%- include('partials/_footer.ejs') %>
+    <script src="/js/main.js"></script>
+
+    <!-- Include animate.css library for animations -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+  </body>
+</html>

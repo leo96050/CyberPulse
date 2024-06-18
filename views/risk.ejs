@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cybersecurity Risk Assessment</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url("../css/b.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #fff;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      h1 {
+        text-align: center;
+        color: #ffffff;
+      }
+
+      .question {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ffffff;
+        padding-bottom: 20px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: #ffffff;
+      }
+
+      input[type="radio"] {
+        margin-right: 10px;
+        transform: scale(1.5);
+      }
+
+      button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background-color: #e1561f;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #ffffff;
+      }
+
+      .chart-container {
+        position: relative;
+        height: 400px; /* Set a fixed height */
+        overflow: auto; /* Add overflow property */
+        margin-top: 20px;
+      }
+
+      #recommendations {
+        margin-top: 20px;
+      }
+
+      #recommendations h3 {
+        color: #ffffff;
+      }
+
+      #recommendations ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      #recommendations ul li {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Cybersecurity Risk Assessment</h1>
+      <form id="riskAssessmentForm">
+        <div class="question">
+          <label for="weakPasswords"
+            >Do you use strong, unique passwords for each of your online
+            accounts?</label
+          >
+          <input
+            type="radio"
+            name="weakPasswords"
+            value="yes"
+            id="weakPasswords-yes"
+          />
+          <label for="weakPasswords-yes">Yes</label>
+          <input
+            type="radio"
+            name="weakPasswords"
+            value="no"
+            id="weakPasswords-no"
+          />
+          <label for="weakPasswords-no">No</label>
+        </div>
+        <div class="question">
+          <label for="q2"
+            >Question 2: Do you regularly update your software and
+            applications?</label
+          >
+          <input type="radio" name="q2" value="yes" id="q2-yes" />
+          <label for="q2-yes">Yes</label>
+          <input type="radio" name="q2" value="no" id="q2-no" />
+          <label for="q2-no">No</label>
+        </div>
+        <div class="question">
+          <label for="q3"
+            >Question 3: Do you use a reputable antivirus software?</label
+          >
+          <input type="radio" name="q3" value="yes" id="q3-yes" />
+          <label for="q3-yes">Yes</label>
+          <input type="radio" name="q3" value="no" id="q3-no" />
+          <label for="q3-no">No</label>
+        </div>
+        <div class="question">
+          <label for="q4"
+            >Question 4: Do you avoid clicking on suspicious links or email
+            attachments?</label
+          >
+          <input type="radio" name="q4" value="yes" id="q4-yes" />
+          <label for="q4-yes">Yes</label>
+          <input type="radio" name="q4" value="no" id="q4-no" />
+          <label for="q4-no">No</label>
+        </div>
+        <div class="question">
+          <label for="q5"
+            >Question 5: Do you use public Wi-Fi networks without using a
+            VPN?</label
+          >
+          <input type="radio" name="q5" value="yes" id="q5-yes" />
+          <label for="q5-yes">Yes</label>
+          <input type="radio" name="q5" value="no" id="q5-no" />
+          <label for="q5-no">No</label>
+        </div>
+        <div class="question">
+          <label for="q6"
+            >Question 6: Do you share your passwords with anyone?</label
+          >
+          <input type="radio" name="q6" value="yes" id="q6-yes" />
+          <label for="q6-yes">Yes</label>
+          <input type="radio" name="q6" value="no" id="q6-no" />
+          <label for="q6-no">No</label>
+        </div>
+        <div class="question">
+          <label for="q7"
+            >Question 7: Do you regularly backup your important data?</label
+          >
+          <input type="radio" name="q7" value="yes" id="q7-yes" />
+          <label for="q7-yes">Yes</label>
+          <input type="radio" name="q7" value="no" id="q7-no" />
+          <label for="q7-no">No</label>
+        </div>
+        <div class="question">
+          <label for="q8"
+            >Question 8: Do you enable two-factor authentication (2FA) whenever
+            possible?</label
+          >
+          <input type="radio" name="q8" value="yes" id="q8-yes" />
+          <label for="q8-yes">Yes</label>
+          <input type="radio" name="q8" value="no" id="q8-no" />
+          <label for="q8-no">No</label>
+        </div>
+        <div class="question">
+          <label for="q9"
+            >Question 9: Do you avoid using public computers for accessing
+            sensitive information?</label
+          >
+          <input type="radio" name="q9" value="yes" id="q9-yes" />
+          <label for="q9-yes">Yes</label>
+          <input type="radio" name="q9" value="no" id="q9-no" />
+          <label for="q9-no">No</label>
+        </div>
+        <div class="question">
+          <label for="q10"
+            >Question 10: Do you review your account activity regularly for any
+            suspicious behavior?</label
+          >
+          <input type="radio" name="q10" value="yes" id="q10-yes" />
+          <label for="q10-yes">Yes</label>
+          <input type="radio" name="q10" value="no" id="q10-no" />
+          <label for="q10-no">No</label>
+        </div>
+        <!-- Add more questions -->
+        <button type="button" onclick="calculateRisk()">Calculate Risk</button>
+        <div id="riskResult" style="display: none">
+          <h2>Risk Assessment Result:</h2>
+          <p id="riskLevel"></p>
+          <div id="recommendations"></div>
+          <div class="chart-container">
+            <canvas id="riskChart" width="400" height="400"></canvas>
+            <div id="legend"></div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script>
+      function calculateRisk() {
+        const riskFactors = {};
+        const recommendations = [];
+
+        const questions = document.querySelectorAll(".question");
+        questions.forEach((question) => {
+          const label = question.querySelector("label").innerText;
+          const name = question
+            .querySelector('input[type="radio"]')
+            .getAttribute("name");
+          const response = question.querySelector(
+            'input[type="radio"]:checked'
+          );
+          if (response) {
+            const factor = {
+              label: label,
+              weight: response.value === "no" ? 1 : 0,
+            };
+            riskFactors[name] = factor;
+            if (response.value === "no") {
+              recommendations.push(`Improve in: ${label}`);
+            }
+          }
+        });
+
+        let totalRiskScore = Object.values(riskFactors).reduce(
+          (total, factor) => total + factor.weight,
+          0
+        );
+        let riskLevel;
+        if (totalRiskScore < 5) {
+          riskLevel = "Low";
+        } else if (totalRiskScore < 10) {
+          riskLevel = "Medium";
+        } else {
+          riskLevel = "High";
+        }
+
+        document.getElementById(
+          "riskLevel"
+        ).innerText = `Your risk level is: ${riskLevel}`;
+        document.getElementById("riskResult").style.display = "block";
+
+        const ctx = document.getElementById("riskChart").getContext("2d");
+        const riskChart = new Chart(ctx, {
+          type: "pie",
+          data: {
+            labels: Object.values(riskFactors).map((factor) => factor.label),
+            datasets: [
+              {
+                data: Object.values(riskFactors).map((factor) => factor.weight),
+                backgroundColor: [
+                  "rgba(255, 99, 132, 0.5)",
+                  "rgba(255, 205, 86, 0.5)",
+                  "rgba(54, 162, 235, 0.5)",
+                  "rgba(75, 192, 192, 0.5)",
+                  "rgba(153, 102, 255, 0.5)",
+                  "rgba(255, 159, 64, 0.5)",
+                  "rgba(255, 99, 132, 0.5)",
+                  "rgba(255, 205, 86, 0.5)",
+                  "rgba(54, 162, 235, 0.5)",
+                  "rgba(75, 192, 192, 0.5)",
+                ],
+                borderColor: [
+                  "rgba(255, 99, 132, 1)",
+                  "rgba(255, 205, 86, 1)",
+                  "rgba(54, 162, 235, 1)",
+                  "rgba(75, 192, 192, 1)",
+                  "rgba(153, 102, 255, 1)",
+                  "rgba(255, 159, 64, 1)",
+                  "rgba(255, 99, 132, 1)",
+                  "rgba(255, 205, 86, 1)",
+                  "rgba(54, 162, 235, 1)",
+                  "rgba(75, 192, 192, 1)",
+                ],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            legend: {
+              display: false,
+            },
+          },
+        });
+
+        const legend = document.getElementById("legend");
+        const legendHTML = Object.values(riskFactors)
+          .map((factor, index) => {
+            const color = riskChart.data.datasets[0].backgroundColor[index];
+            return `<div><span style="display:inline-block;width:20px;height:10px;background-color:${color};"></span>${factor.label}</div>`;
+          })
+          .join("");
+        legend.innerHTML = legendHTML;
+
+        const recommendationsDiv = document.getElementById("recommendations");
+        recommendationsDiv.innerHTML = `<h3>Recommendations:</h3><ul>${recommendations
+          .map((item) => `<li>${item}</li>`)
+          .join("")}</ul>`;
+      }
+    </script>
+  </body>
+</html>

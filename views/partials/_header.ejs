@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-md navbar-dark" style="font-size: 20px">
+  <a class="navbar-brand" href="/" style="font-size: 24px">CyberPulse</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNav"
+    aria-controls="navbarNav"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+    style="font-size: 24px"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  
+  <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
+    <ul class="navbar-nav" style="font-size: 24px">
+      <li class="nav-item" style="margin-right: 20px">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item" style="margin-right: 20px">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item" style="margin-right: 20px">
+        <a class="nav-link" href="/security">Security</a>
+      </li>
+      <li class="nav-item" style="margin-right: 20px">
+        <a class="nav-link" href="/education">Education Hub</a>
+      </li>
+      <li class="nav-item" style="margin-right: 20px">
+        <a class="nav-link" href="/risk">Risk</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav" style="font-size: 24px">
+      <li class="nav-item" style="margin-right: 20px">
+        <% if (session && session.userId) { %>
+        <a class="nav-link" href="/auth/logout">Logout</a>
+        <% } else { %>
+        <a class="nav-link" href="/auth/login">Login</a>
+        <% } %>
+      </li>
+      <li class="nav-item" style="margin-right: 20px">
+        <a class="nav-link" href="/rate">Rate Us</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // Function to toggle chatbot visibility
+  function toggleChatbot() {
+    var chatbotContainer = document.getElementById("chatbot-container");
+    chatbotContainer.style.display = chatbotContainer.style.display === "none" ? "block" : "none";
+  }
+
+  // Load chatbot script
+  window.embeddedChatbotConfig = {
+    chatbotId: "XE5cOP-E6DZAjOZdUhEDA",
+    domain: "www.chatbase.co"
+  };
+
+  var script = document.createElement("script");
+  script.src = "https://www.chatbase.co/embed.min.js";
+  script.chatbotId = "XE5cOP-E6DZAjOZdUhEDA";
+  script.domain = "www.chatbase.co";
+  script.defer = true;
+  document.head.appendChild(script);
+</script>
+
+<div id="chatbot-container" style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+  <iframe
+    src="https://www.chatbase.co/chatbot-iframe/XE5cOP-E6DZAjOZdUhEDA"
+    title="Chatbot"
+    width="350px"
+    height="500px"
+    frameborder="0"
+    style="border: none; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); border-radius: 10px;"
+  ></iframe>
+</div>

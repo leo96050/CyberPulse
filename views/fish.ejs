@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Account Verification</title>
+    <style>
+      /* Basic styling */
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+        color: white;
+        background-image: linear-gradient(to right, #ff3d60, #ff9966);
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+      }
+
+      .header {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .content {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+        text-align: center;
+        max-width: 500px;
+      }
+
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: white;
+        color: #ff3d60;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+      }
+
+      .button:hover {
+        background-color: #ff3d60;
+        color: white;
+        cursor: pointer;
+      }
+
+      .feedback {
+        margin-top: 30px;
+        font-size: 1.2em;
+        text-align: center;
+      }
+
+      /* Make the email look like an actual email */
+      .email {
+        border: 1px solid white;
+        padding: 20px;
+        margin-bottom: 20px;
+        color: white;
+        position: relative;
+        z-index: 1;
+        border-radius: 5px;
+        max-width: 500px;
+        text-align: center;
+      }
+
+      .email::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 30px;
+        background-image: linear-gradient(to right, #ff3d60, #ff9966);
+        position: absolute;
+        top: -15px;
+        left: 0;
+        z-index: -1;
+        border-radius: 5px 5px 0 0;
+      }
+
+      .email h3 {
+        margin: 0 0 10px;
+      }
+
+      .email p {
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      /* Make the phishing check button look like a real button */
+      button {
+        display: block;
+        margin: 30px auto;
+        padding: 10px 20px;
+        background-color: white;
+        color: #ff3d60;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.2em;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        max-width: 300px;
+      }
+
+      button:hover {
+        background-color: #ff3d60;
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">Instagram Account Verification</div>
+      <div class="content">
+        Dear User, We've noticed some unusual activity on your Instagram
+        account. To ensure the security of your account, please verify your
+        information by clicking the button below:
+      </div>
+      <div class="email">
+        <h3>Instagram Security</h3>
+        <p>
+          We've noticed some unusual activity on your Instagram account. Please
+          click the button below to verify your information.
+        </p>
+        <a href="/email" class="button">Verify Account</a>
+      </div>
+      <button onclick="checkPhishing()">Is this a phishing attempt?</button>
+      <div id="feedback" class="feedback"></div>
+    </div>
+
+    <script>
+      function checkPhishing() {
+        var userResponse = confirm("Do you think this is a phishing attempt?");
+        var feedbackElement = document.getElementById("feedback");
+        if (userResponse) {
+          feedbackElement.innerHTML =
+            "You're correct! This is a phishing attempt.";
+        } else {
+          feedbackElement.innerHTML =
+            "Sorry, this is actually a phishing attempt. Be cautious!";
+        }
+      }
+    </script>
+  </body>
+</html>

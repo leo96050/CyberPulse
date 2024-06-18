@@ -1,0 +1,22 @@
+{
+  "manifest_version": 2,
+  "name": "PrivacyGuard",
+  "version": "1.0",
+  "description": "Protect your privacy by blocking third-party cookies and scripts.",
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "https://*/*",
+    "http://*/*",
+    "cookies",
+    "storage"
+  ],
+  "background": {
+    "page": "background.html"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
+}

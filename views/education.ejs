@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/_head.ejs') %>
+    <style>
+      /* Preserve the existing styling */
+      body {
+        background-image: url("../css/b.jpg");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Container styling */
+      .education-container {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.7); /* Retained dark color */
+        border-radius: 20px;
+        color: white;
+      }
+
+      /* Button styling */
+      .btn-primary {
+        background-color: #ff6200; /* Retained old button color */
+        border-color: #ff6200; /* Retained old button color */
+      }
+
+      .btn-primary:hover {
+        background-color: #e05200; /* Retained old button color on hover */
+        border-color: #e05200; /* Retained old button color on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('partials/_header.ejs') %>
+    <main role="main" class="container mt-4">
+      <div class="row justify-content-between align-items-start">
+        <div class="col-lg-6">
+          <!-- Card for Phishing -->
+          <div class="card rounded education-container">
+            <div class="card-body">
+              <h1 class="card-title">Phishing</h1>
+              <p class="card-text">
+                Learn about phishing, one of the most common cyber threats:
+              </p>
+              <!-- Phishing description -->
+              <p>
+                <strong>Phishing:</strong> Phishing is a type of cyber attack
+                where attackers send fraudulent emails or messages to trick
+                individuals into disclosing sensitive information such as login
+                credentials, financial data, or personal details.
+              </p>
+              <!-- "Launch Phishing Playground" button -->
+              <a href="/fish" class="btn btn-primary mt-3"
+                >Launch Phishing Playground</a
+              >
+            </div>
+          </div>
+          <!-- Card for SQL ClickJacking -->
+          <div class="card rounded education-container mt-4">
+            <div class="card-body">
+              <h1 class="card-title">ClickJacking</h1>
+              <p class="card-text">
+                Learn about Clickjacking, a common vulnerability in web
+                applications:
+              </p>
+              <!-- SQL Injection description -->
+              <p>
+                <strong>Click Jacking:</strong> Clickjacking is a malicious
+                technique used by attackers to trick users into clicking on
+                something different from what they perceive. The attacker hides
+                clickable elements on a webpage under seemingly harmless or
+                desirable content.
+              </p>
+              <!-- "Launch SQL clickjacking Playground" button -->
+              <a href="/click" class="btn btn-primary mt-3"
+                >Launch Clickjacking Playground</a
+              >
+            </div>
+          </div>
+          <!-- Add more cards for additional vulnerabilities and playgrounds as needed -->
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

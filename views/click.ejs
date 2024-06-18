@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clickjacking Demo</title>
+    <style>
+      /* Overall layout */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #ffdde1; /* Pinkish peach background color */
+      }
+      .container {
+        max-width: 600px;
+        width: 100%;
+      }
+      /* Style for the social media feed */
+      .social-feed {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      /* Style for each post */
+      .post {
+        border-bottom: 1px solid #ddd;
+        padding: 20px;
+        position: relative;
+      }
+      .post:before {
+        content: "";
+        width: 100%;
+        height: 2px;
+        background-color: #ddd;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform: scaleY(0);
+        transition: transform 0.3s ease-in-out;
+      }
+      .post:hover:before {
+        transform: scaleY(1);
+      }
+      /* Style for user avatar */
+      .avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 15px;
+      }
+      /* Style for post content */
+      .post-content {
+        margin-top: 5px;
+      }
+      /* Style for post username */
+      .username {
+        font-weight: bold;
+        color: #2e7d32;
+      }
+      /* Style for the button */
+      .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #2e7d32;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 20px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        transition: background-color 0.3s ease-in-out;
+      }
+      .btn:hover {
+        background-color: #1b5e20;
+      }
+      /* Add some vibrant colors */
+      .post-content {
+        color: #3f3f3f;
+      }
+      .post-content p {
+        margin-bottom: 15px;
+      }
+      .post-content a {
+        color: #2e7d32;
+      }
+      .btn {
+        background-color: #388e3c;
+      }
+      .btn:hover {
+        background-color: #2e7d32;
+      }
+      /* Add some shadows and gradients */
+      .social-feed {
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+        border-radius: 15px;
+      }
+      .post {
+        background-image: linear-gradient(to bottom, #f9f9f9 0%, #fff 100%);
+        border-radius: 15px;
+      }
+      .post:before {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+      .username {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+      }
+      .btn {
+        background-image: linear-gradient(to right, #2e7d32 0%, #1b5e20 100%);
+      }
+      .btn:hover {
+        background-image: linear-gradient(to right, #1b5e20 0%, #2e7d32 100%);
+      }
+      /* Style for the image */
+      .image {
+        width: 100%;
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+        border-radius: 15px 15px 0 0;
+      }
+      .empty-image {
+        width: 100%;
+        height: 300px;
+        background-color: #fff; /* White background color for empty image */
+        border-radius: 15px 15px 0 0;
+      }
+      /* Style for the post footer */
+      .post-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+      }
+      /* Style for the post actions */
+      .post-actions {
+        display: flex;
+        align-items: center;
+      }
+      .post-action {
+        margin-left: 10px;
+      }
+      /* Style for the post user */
+      .post-user {
+        display: flex;
+        align-items: center;
+      }
+      .post-user img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+      /* Style for the post time */
+      .post-time {
+        font-size: 12px;
+        color: #999;
+      }
+      /* Decorative elements on the sides */
+      .side-decoration {
+        position: absolute;
+        top: 0;
+        width: 40px;
+        height: 100%;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 0),
+          #ffdde1,
+          rgba(255, 255, 255, 0)
+        );
+        z-index: -1;
+      }
+      .left-side-decoration {
+        left: 0;
+      }
+      .right-side-decoration {
+        right: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="social-feed">
+        <!-- Fake social media feed -->
+        <div class="post">
+          <div
+            class="image"
+            style="
+              background-image: url('https://source.unsplash.com/random/600x600?1');
+            "
+          ></div>
+          <div class="post-content">
+            <p>
+              <span class="username">User123</span>: Hey everyone, check out
+              this cool website!
+            </p>
+            <p>Post content goes here...</p>
+            <p><a href="#">#coolwebsite #newwebsite #trending</a></p>
+          </div>
+          <div class="post-footer">
+            <div class="post-actions">
+              <button class="post-action">
+                <i class="material-icons">favorite_border</i>
+              </button>
+              <button class="post-action">
+                <i class="material-icons">chat_bubble_outline</i>
+              </button>
+              <button class="post-action">
+                <i class="material-icons">share</i>
+              </button>
+            </div>
+            <div class="post-user">
+              <img
+                src="https://source.unsplash.com/random/40x40"
+                alt="User Avatar"
+              />
+              <span class="username">User123</span>
+            </div>
+            <div class="post-time">1 hour ago</div>
+          </div>
+        </div>
+        <div class="post">
+          <div
+            class="image"
+            style="
+              background-image: url('https://source.unsplash.com/random/600x600?2');
+            "
+          ></div>
+          <div class="post-content">
+            <p>
+              <span class="username">User234</span>: Just had the most amazing
+              brunch at this new place!
+            </p>
+            <p>Post content goes here...</p>
+            <p><a href="#">#brunch #foodie #yum</a></p>
+          </div>
+          <div class="post-footer">
+            <div class="post-actions">
+              <button class="post-action">
+                <i class="material-icons">favorite_border</i>
+              </button>
+              <button class="post-action">
+                <i class="material-icons">chat_bubble_outline</i>
+              </button>
+              <button class="post-action">
+                <i class="material-icons">share</i>
+              </button>
+            </div>
+            <div class="post-user">
+              <img
+                src="https://source.unsplash.com/random/40x40"
+                alt="User Avatar"
+              />
+              <span class="username">User234</span>
+            </div>
+            <div class="post-time">3 hours ago</div>
+          </div>
+        </div>
+        <div class="post">
+          <div
+            class="image"
+            style="
+              background-image: url('https://source.unsplash.com/random/600x600?3');
+            "
+          ></div>
+          <div class="post-content">
+            <p>
+              <span class="username">User345</span>: Just finished a killer
+              workout at the gym!
+            </p>
+            <p>Post content goes here...</p>
+            <p><a href="#">#fitness #gym #motivation</a></p>
+          </div>
+          <div class="post-footer">
+            <div class="post-actions">
+              <button class="post-action">
+                <i class="material-icons">favorite_border</i>
+              </button>
+              <button class="post-action">
+                <i class="material-icons">chat_bubble_outline</i>
+              </button>
+              <button class="post-action">
+                <i class="material-icons">share</i>
+              </button>
+            </div>
+            <div class="post-user">
+              <img
+                src="https://source.unsplash.com/random/40x40"
+                alt="User Avatar"
+              />
+              <span class="username">User345</span>
+            </div>
+            <div class="post-time">5 hours ago</div>
+          </div>
+        </div>
+        <!-- More posts can be added here -->
+      </div>
+      <!-- Button to simulate clickjacking -->
+      <button class="btn" onclick="postUnintendedContent()">
+        View Funny Cat Video
+      </button>
+      <!-- Side decorations -->
+      <div class="side-decoration left-side-decoration"></div>
+      <div class="side-decoration right-side-decoration"></div>
+    </div>
+    <script>
+      // Function to post unintended content (simulating clickjacking)
+      function postUnintendedContent() {
+        // Simulate posting unintended content
+        const newPost = document.createElement("div");
+        newPost.classList.add("post");
+        newPost.innerHTML = `
+ <div class="image" style="background-image: url('https://source.unsplash.com/random/600x600?cat')"></div>
+ <div class="post-content">
+ <p><span class="username">User123</span>: Check out this funny cat video!</p>
+ <p>This post was created unintentionally due to clickjacking.</p>
+ </div>
+ <div class="post-footer">
+ <div class="post-actions">
+ <button class="post-action">
+ <i class="material-icons">favorite_border</i>
+ </button>
+ <button class="post-action">
+ <i class="material-icons">chat_bubble_outline</i>
+ </button>
+ <button class="post-action">
+ <i class="material-icons">share</i>
+ </button>
+ </div>
+ <div class="post-user">
+ <img src="https://source.unsplash.com/random/40x40" alt="User Avatar">
+ <span class="username">User123</span>
+ </div>
+ <div class="post-time">
+ 1 hour ago
+ </div>
+ </div>
+ `;
+        // Append the new post to the social media feed
+        document.querySelector(".social-feed").appendChild(newPost);
+      }
+    </script>
+  </body>
+</html>
